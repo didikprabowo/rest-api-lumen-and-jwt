@@ -14,7 +14,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
-$router->group(['prefix' => 'v1','middleware' => 'jwt.auth'], function () use ($router) {
+$router->group(['prefix' => 'v1'], function () use ($router) {
     $router->get('blog', 'BlogController@index');
     $router->get('blog/{id}', 'BlogController@show');
     $router->post('blog', 'BlogController@post');
