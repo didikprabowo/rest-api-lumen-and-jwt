@@ -27,7 +27,7 @@ class BlogController extends Controller
       if ($request->has('title','content')) {
           $save = Blog::create($request->all());
           if ($save) {
-             $response = [ "status" => true];
+             $response = [ "status" => true,"data" => $request->all()];
              return response()->json($response,201);
            }else{
              $response = [ "status" => false];
@@ -53,7 +53,7 @@ class BlogController extends Controller
     public function delete($id){
        $blog = Blog::destroy($id);
        $response = [ "status" => true];
-       return response()->json($response,410);
+       return response()->json($response,202);
 
     }
 }
